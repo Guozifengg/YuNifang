@@ -2,6 +2,7 @@ package yunifang.bwei.com.yunifang.fragment;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,9 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ import yunifang.bwei.com.yunifang.R;
 import yunifang.bwei.com.yunifang.adapter.MyBase;
 import yunifang.bwei.com.yunifang.bean.GouWuCarBean;
 import yunifang.bwei.com.yunifang.bean.UsersBean;
+import yunifang.bwei.com.yunifang.ui.activity.PayActivity;
 
 /**
  * 姓名：郭子锋
@@ -46,6 +50,9 @@ public class CartFragment extends Fragment {
     private DbUtils utils;
     private List<UsersBean> list2;
     private ListView carLv;
+    private RelativeLayout emptyCar;
+    private LinearLayout ll2;
+    private TextView jieSuan;
 
     @Nullable
     @Override
@@ -55,14 +62,14 @@ public class CartFragment extends Fragment {
         //数据库
         initDataBase();
         carLv = (ListView) view1.findViewById(R.id.carLv);
+        emptyCar = (RelativeLayout) view1.findViewById(R.id.emptyCar);
+        ll2 = (LinearLayout) view1.findViewById(R.id.ll2);
+        jieSuan = (TextView) view1.findViewById(R.id.jieSuan);
         //初始化数据
         initData();
-        if(list==null&&list.size()<=0){
-            Toast.makeText(getActivity(), "还没有添加任何商品！", Toast.LENGTH_SHORT).show();
-        }else {
+
             myBase = new MyBase2();
             carLv.setAdapter(myBase);
-        }
         checkAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,22 +107,34 @@ public class CartFragment extends Fragment {
                             e.printStackTrace();
                         }
                         myBase.notifyDataSetChanged();
+
                     }
                 });
-
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
-
                 builder.show();
 
                 return true;
             }
         });
 
+        /*if(list2!=null&&!list2.isEmpty()){
+            emptyCar.setVisibility(View.GONE);
+            ll2.setVisibility(View.VISIBLE);
+        }else {
+            emptyCar.setVisibility(View.VISIBLE);
+            ll2.setVisibility(View.GONE);
+        }*/
+        jieSuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), PayActivity.class);
+                startActivity(intent);
+            }
+        });
         return view1;
     }
 
@@ -147,14 +166,15 @@ public class CartFragment extends Fragment {
             e.printStackTrace();
         }
         list=new ArrayList<>();
-        if(list2!=null) {
-            if (!list2.isEmpty()) {
-                for (UsersBean s : list2) {
-                    list.add(new GouWuCarBean(s.getDbImg(), s.getDbName(), s.getDbPrice(), s.getDbCount()));
-                }
+        if(list2!=null&&!list2.isEmpty()){
+            for (UsersBean s : list2) {
+                list.add(new GouWuCarBean(s.getDbImg(), s.getDbName(), s.getDbPrice(), s.getDbCount()));
             }
+            emptyCar.setVisibility(View.GONE);
         }else{
-            Log.d("zzz","数据库为空");
+            Toast.makeText(getActivity(), "数据库为空", Toast.LENGTH_SHORT).show();
+            emptyCar.setVisibility(View.VISIBLE);
+            ll2.setVisibility(View.GONE);
         }
 
     }
