@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setBackground(2);
                 break;
             case R.id.gwcLl:
-                if(cartFragment==null) {
+                //每次都new一下加载数据库里面的数据
                     cartFragment = new CartFragment();
-                }
                 addFragment(cartFragment);
                 setColor(3);
                 setBackground(3);
