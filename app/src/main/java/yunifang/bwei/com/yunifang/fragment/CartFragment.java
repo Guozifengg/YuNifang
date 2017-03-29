@@ -83,8 +83,8 @@ public class CartFragment extends Fragment {
         //条目监听
         carLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), "长按了", Toast.LENGTH_SHORT).show();
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+                Toast.makeText(getActivity(), "长按了"+position, Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("提示");
                 builder.setMessage("是否删除！");
@@ -92,10 +92,10 @@ public class CartFragment extends Fragment {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        list.remove(i+1);
-
+                        list.remove(position);
                         try {
-                            utils.delete(UsersBean.class, WhereBuilder.b("id","=",i));
+                            int dd=utils.findAll(UsersBean.class).get(position).getId();
+                            utils.delete(UsersBean.class, WhereBuilder.b("id","=",dd));
                         } catch (DbException e) {
                             e.printStackTrace();
                         }
