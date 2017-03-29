@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/carCheckBox"
+        android:layout_marginTop="30dp"
+        />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_toRightOf="@+id/carCheckBox"
+        android:id="@+id/carImage"/>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/carName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="男士深海水动力"
+        android:layout_toRightOf="@+id/carImage"/>
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥"
+        android:layout_alignBottom="@+id/carImage"
+        android:layout_toRightOf="@+id/carImage"
+        android:id="@+id/carMoney"
+        android:textColor="#fc708b"/>
+    <TextView
+        android:layout_marginLeft="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="39.90"
+        android:layout_toRightOf="@+id/carMoney"
+        android:layout_alignBottom="@+id/carImage"
+        android:textColor="#fc708b"
+        android:id="@+id/carPrice"/>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="数量:"
+        android:layout_toRightOf="@+id/carPrice"
+        android:layout_alignBottom="@+id/carImage"
+        android:id="@+id/shuliang"/>
+    <TextView
+        android:layout_marginLeft="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:layout_toRightOf="@+id/shuliang"
+        android:layout_alignBottom="@+id/carImage"
+        android:id="@+id/carCount"/>
+</RelativeLayout>

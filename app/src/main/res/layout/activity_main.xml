@@ -3,14 +3,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.MainActivity">
 
-    <TextView
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame"
+        android:layout_above="@+id/ll"></FrameLayout>
+
+    <LinearLayout
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/ll"
+        android:layout_alignParentBottom="true">
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/syLl">
+        <ImageView
+            android:id="@+id/syimg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/shouye1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="首页"
+            android:textSize="12dp"
+            android:id="@+id/syTv"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/flLl"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/flimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/fenlei1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分类"
+                android:textSize="12dp"
+                android:id="@+id/flTv"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mlLl"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/mlimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/meila1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="美啦"
+                android:textSize="12dp"
+                android:id="@+id/mlTv"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gwcLl"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/gwcimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/gouwuche1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="购物车"
+                android:textSize="12dp"
+                android:id="@+id/gwcTv"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wdLl"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/wdimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/wode1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                android:textSize="12dp"
+                android:id="@+id/wdTv"/>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
