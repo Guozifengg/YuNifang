@@ -27,4 +27,14 @@
         </LinearLayout>
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@mipmap/fenleitop"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@mipmap/fenleimoddle"/>
+
+
 </LinearLayout>
